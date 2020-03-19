@@ -1,0 +1,16 @@
+os: linux
+language: python
+python:
+  - "3.7"
+install:
+  - pip install gTTS
+script:
+  - python test.py
+deploy:
+  provider: pages
+  local_dir: build
+  token: $GITHUB_TOKEN
+  keep_history: false
+  edge: true
+  on:
+    branch: master
