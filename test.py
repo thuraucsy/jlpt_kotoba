@@ -43,5 +43,5 @@ with open('Win Kotoba - TTS output.csv') as csvfile:
 		if index == 0: continue
 		print(f'{row[0]}, {row[4]}, {row[2]}, {row[3]}')
 		if row[4]: saveMM(row)
-		if row[2]: saveJP(row)
-		# if index == 10: break
+		# if row[2]: saveJP(row)
+		if index == 10: break
