@@ -8,10 +8,11 @@ def saveMM(row):
 	tts.save(f'build/tts/mm/{row[0]}.mp3')
 
 def splitUnwanted(jpWord):
-	if jpWord[0] == '（':
-		jpWord = jpWord.split('）')[1]
-	else:
-		jpWord = jpWord.split('（')[0]
+	if jpWord:
+		if jpWord[0] == '（':
+			jpWord = jpWord.split('）')[1]
+		else:
+			jpWord = jpWord.split('（')[0]
 	return jpWord
 
 def saveJP(row):
