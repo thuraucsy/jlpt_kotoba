@@ -3,12 +3,13 @@ import csv
 import requests
 import re
 
-def saveMMorEn(row):
-	if row[4]:
-		tts = gTTS(row[4], lang = 'my')
-	else:
-		tts = gTTS(row[5], lang = 'en')
+def saveMM(row):
+	tts = gTTS(row[4], lang = 'my')
 	tts.save(f'build/tts/mm/{row[0]}.mp3')
+
+def saveEn(row):
+	tts = gTTS(row[5], lang = 'en')
+	tts.save(f'build/tts/en/{row[0]}.mp3')
 
 def splitUnwanted(jpWord):
 	if jpWord:
@@ -43,8 +44,11 @@ def saveJP(row):
 with open('Win Kotoba - TTS output.csv') as csvfile:
 	reader = csv.reader(csvfile)
 	for index, row in enumerate(reader):
+		# if index <= 10417: continue
 		if index == 0: continue
-		print(f'{row[0]}, {row[4]}, {row[2]}, {row[3]}')
-		if row[4] or row[5]: saveMMorEn(row)
+		print(f'{row[0]}, {row[4]}, {row[2]}, {row[3]}, {row[5]}')
+		if row[4]: saveMM(row)
+		if row[5]: saveEn(row)
 		# if row[2]: saveJP(row)
+		# if index == 10419: break
 		# if index == 10: break
